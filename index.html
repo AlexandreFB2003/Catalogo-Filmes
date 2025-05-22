@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catálogo de Filmes</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Tailwind Dark Mode -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#e50914',
+          },
+        },
+      }
+    }
+  </script>
+</head>
+<body class="bg-gray-900 text-white min-h-screen">
+
+  <!-- Cabeçalho -->
+  <header class="bg-primary text-white text-center p-4 text-2xl font-bold">
+    Catálogo de Filmes
+  </header>
+
+  <!-- Campo de busca -->
+  <section class="p-4 flex justify-center gap-2">
+    <input
+      id="searchInput"
+      type="text"
+      placeholder="Buscar filmes..."
+      class="w-full max-w-md px-4 py-2 rounded text-black"
+    />
+    <button
+      id="searchButton"
+      class="px-4 py-2 bg-primary rounded hover:bg-red-700 transition"
+    >
+      Buscar
+    </button>
+  </section>
+
+  <!-- Grid de filmes -->
+  <main id="movieGrid" class="p-4 grid gap-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+    <!-- Filmes vão aparecer aqui -->
+  </main>
+
+  <!-- Paginação -->
+<section id="pagination" class="text-center text-white mt-4"></section>
+
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
