@@ -30,6 +30,7 @@ Bem-vindo ao **Catálogo de Filmes**, um projeto web moderno e responsivo que pe
 
 ```bash
 git clone https://github.com/AlexandreFB2003/Catalogo-Filmes
+cd Catalogo-Filmes
 npm install
 npm start
 ```
