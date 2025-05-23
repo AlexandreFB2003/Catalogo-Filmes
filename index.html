@@ -5,28 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Catálogo de Filmes</title>
 
-  <!-- Tailwind CSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Configuração personalizada do Tailwind -->
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            primary: '#e50914', // cor personalizada (vermelho estilo Netflix)
+            primary: '#e50914',
           },
         },
       },
     };
   </script>
 
-  <!-- Biblioteca de ícones Lucide -->
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 
-  <!-- Estilo da imagem de fundo e animações -->
   <style>
-    /* Imagem de fundo escura e opaca com efeito suave */
     body::before {
   content: '';
   position: fixed;
@@ -39,7 +34,6 @@
   z-index: -1;
 }
 
-    /* Animação de entrada suave (fade + translateY) */
     @keyframes fadeIn {
       from {
         opacity: 0;
@@ -62,11 +56,8 @@
 </head>
 
 <body class="bg-gray-900 text-white flex flex-col min-h-screen">
-  <!-- Corpo com layout flex vertical e fundo escuro -->
 
-  <!-- Área principal com flex-grow para empurrar o footer -->
   <div class="flex-grow">
-    <!-- Seção inicial explicativa -->
     <section class="p-8 text-center max-w-2xl mx-auto animate-fadeIn">
       <div class="text-5xl mb-4">🎬</div>
       <h2 class="text-4xl font-extrabold mb-4">Bem-vindo ao Catálogo de Filmes</h2>
@@ -76,7 +67,6 @@
       </p>
     </section>
 
-    <!-- Campo de busca com botão -->
     <section class="p-4 flex justify-center gap-2 animate-fadeIn delay-200">
       <input
         id="searchInput"
@@ -93,9 +83,7 @@
     </section>
   </div>
 
-  <!-- Rodapé fixo no final da página -->
   <footer class="py-6 text-center text-gray-400 border-t border-gray-700 backdrop-blur-sm">
-    <!-- Links com ícones -->
     <div class="flex justify-center gap-4 mb-2">
       <a href="https://github.com/AlexandreFB2003" target="_blank" class="hover:text-white flex items-center gap-1">
         <i data-lucide="github" class="w-5 h-5"></i> GitHub
@@ -104,18 +92,14 @@
         <i data-lucide="mail" class="w-5 h-5"></i> Email
       </a>
     </div>
-    <!-- Texto de crédito -->
     <p class="text-sm">© 2025 Alexandre Fonseca Borges. Todos os direitos reservados.</p>
   </footer>
 
-  <!-- Lógica JS da busca e inserção do header -->
   <script type="module">
     import { renderHeader } from './views/components.js';
 
-    // Insere dinamicamente o header com título
     renderHeader('Catálogo de Filmes');
 
-    // Quando clicar no botão, redireciona para a página de resultados
     document.getElementById('searchButton').addEventListener('click', () => {
       const query = document.getElementById('searchInput').value.trim();
       if (query) {
@@ -124,7 +108,6 @@
       }
     });
 
-    // Ativa os ícones Lucide no footer
     lucide.createIcons();
   </script>
 </body>

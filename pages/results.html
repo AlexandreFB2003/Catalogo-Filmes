@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Resultados da Busca</title>
 
-  <!-- Tailwind + cor primária -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -22,9 +21,6 @@
 
 <body class="bg-gray-900 text-white min-h-screen">
 
-  <!-- Header será inserido dinamicamente -->
-  
-  <!-- Campo de busca (permite refinar sem voltar à index) -->
   <section class="p-4 flex justify-center gap-2">
     <input
       id="searchInput"
@@ -40,44 +36,34 @@
     </button>
   </section>
 
-  <!-- Grid de filmes -->
   <main id="movieGrid" class="p-4 grid gap-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"></main>
 
-  <!-- Paginação -->
   <section id="pagination" class="text-center text-white mt-4"></section>
 
   <script type="module">
     import { renderHeader } from '../views/components.js';
     import { MovieController } from '../controllers/movieController.js';
 
-    // Renderiza o header reutilizável
     renderHeader('Resultados da Busca');
 
-    // Lê parâmetros da URL: query e page (página da busca)
     const urlParams = new URLSearchParams(window.location.search);
-    const query = urlParams.get('query') || '';              // termo da busca
-    const page = parseInt(urlParams.get('page')) || 1;       // página atual, default 1
+    const query = urlParams.get('query') || '';
+    const page = parseInt(urlParams.get('page')) || 1;
 
     if (query) {
-      // Preenche input com termo buscado para refinar a busca
       document.getElementById('searchInput').value = query;
 
-      // Busca filmes na página especificada
       MovieController.searchMovies(query, page);
     }
 
-    // Evento para novo clique no botão buscar
     document.getElementById('searchButton').addEventListener('click', () => {
       const newQuery = document.getElementById('searchInput').value.trim();
       if (newQuery) {
-        // Redireciona para results.html com query e página 1 (nova busca)
         window.location.href = `results.html?query=${encodeURIComponent(newQuery)}&page=1`;
       }
     });
 
-    // Função para mudar de página, será chamada pela paginação gerada dinamicamente
     window.goToPage = function(newPage) {
-      // Redireciona para mesma busca com página diferente
       window.location.href = `results.html?query=${encodeURIComponent(query)}&page=${newPage}`;
     };
   </script>
