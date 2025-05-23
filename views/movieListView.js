@@ -8,7 +8,10 @@ export const MovieListView = {
       .map(
         movie => `
       <div 
-        class="bg-gray-800 rounded overflow-hidden shadow hover:shadow-lg transition cursor-pointer movie-card"
+        class="bg-gray-800 rounded overflow-hidden shadow-md 
+               transition-all duration-300 transform 
+               hover:scale-105 hover:shadow-xl hover:bg-gray-700 
+               cursor-pointer movie-card"
         data-id="${movie.imdbID}"
       >
         <img src="${movie.Poster !== 'N/A' ? movie.Poster : 'https://via.placeholder.com/300x450?text=Sem+Imagem'}" 
