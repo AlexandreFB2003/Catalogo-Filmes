@@ -7,12 +7,12 @@ export const MovieController = (() => {
   let currentPage = 1;
   let totalPages = 1;
 
-  async function searchMovies(titulo, page = 1) {
+  async function searchMovies(title, page = 1) {
     try {
-      currentTitle = titulo;
+      currentTitle = title;
       currentPage = page;
 
-      const { movies, totalResults } = await MovieService.getMovies(titulo, page);
+      const { movies, totalResults } = await MovieService.getMovies(title, page);
 
       if (movies.length === 0) {
         MovieListView.showMessage('Nenhum filme encontrado.');
@@ -21,6 +21,7 @@ export const MovieController = (() => {
         MovieListView.renderMovies(movies);
         MovieListView.renderPagination(currentPage, totalPages);
       }
+
     } catch (error) {
       MovieListView.showMessage('Erro ao buscar filmes.');
       console.error(error);
@@ -31,6 +32,7 @@ export const MovieController = (() => {
     try {
       const movie = await MovieService.getDetail(imdbID);
       renderMovieDetails(movie);
+      
     } catch (error) {
       MovieListView.showMessage('Erro ao carregar detalhes do filme.');
       console.error(error);

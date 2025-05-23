@@ -1,5 +1,3 @@
-// views/movieDetailView.js
-
 import { showModal } from './components.js';
 
 export function renderMovieDetails(movie) {

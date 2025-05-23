@@ -23,7 +23,6 @@ export const MovieListView = {
       )
       .join('');
 
-    // Adiciona eventos de clique nos cards
     this.movieGrid.querySelectorAll('.movie-card').forEach(card => {
       card.addEventListener('click', () => {
         const imdbID = card.getAttribute('data-id');
