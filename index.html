@@ -5,45 +5,127 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Catálogo de Filmes</title>
 
+  <!-- Tailwind CSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Configuração personalizada do Tailwind -->
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            primary: '#e50914',
+            primary: '#e50914', // cor personalizada (vermelho estilo Netflix)
           },
         },
+      },
+    };
+  </script>
+
+  <!-- Biblioteca de ícones Lucide -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+  <!-- Estilo da imagem de fundo e animações -->
+  <style>
+    /* Imagem de fundo escura e opaca com efeito suave */
+    body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('./assets/image.jpg') no-repeat center center/cover;
+  opacity: 0.25;
+  z-index: -1;
+}
+
+    /* Animação de entrada suave (fade + translateY) */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
     }
-  </script>
+
+    .animate-fadeIn {
+      animation: fadeIn 0.8s ease-out both;
+    }
+
+    .delay-200 {
+      animation-delay: 0.2s;
+    }
+  </style>
 </head>
 
-<body class="bg-gray-900 text-white min-h-screen">
-  <header class="bg-primary text-white text-center p-4 text-2xl font-bold">
-    Catálogo de Filmes
-  </header>
+<body class="bg-gray-900 text-white flex flex-col min-h-screen">
+  <!-- Corpo com layout flex vertical e fundo escuro -->
 
-  <section class="p-4 flex justify-center gap-2">
-    <input
-      id="searchInput"
-      type="text"
-      placeholder="Buscar filmes..."
-      class="w-full max-w-md px-4 py-2 rounded text-black"
-    />
-    <button
-      id="searchButton"
-      class="px-4 py-2 bg-primary rounded hover:bg-red-700 transition"
-    >
-      Buscar
-    </button>
-  </section>
+  <!-- Área principal com flex-grow para empurrar o footer -->
+  <div class="flex-grow">
+    <!-- Seção inicial explicativa -->
+    <section class="p-8 text-center max-w-2xl mx-auto animate-fadeIn">
+      <div class="text-5xl mb-4">🎬</div>
+      <h2 class="text-4xl font-extrabold mb-4">Bem-vindo ao Catálogo de Filmes</h2>
+      <p class="text-lg text-gray-300">
+        Digite o <strong>nome de um filme em inglês</strong> no campo abaixo.<br />
+        Retornaremos todos os filmes que contenham esse nome no título.
+      </p>
+    </section>
 
-  <main id="movieGrid" class="p-4 grid gap-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-  </main>
+    <!-- Campo de busca com botão -->
+    <section class="p-4 flex justify-center gap-2 animate-fadeIn delay-200">
+      <input
+        id="searchInput"
+        type="text"
+        placeholder="Ex: The Matrix"
+        class="w-full max-w-md px-4 py-2 rounded text-black shadow-md focus:outline-none focus:ring-2 focus:ring-primary"
+      />
+      <button
+        id="searchButton"
+        class="px-4 py-2 bg-primary rounded hover:bg-red-700 transition text-white font-semibold shadow-md"
+      >
+        Buscar
+      </button>
+    </section>
+  </div>
 
-<section id="pagination" class="text-center text-white mt-4"></section>
+  <!-- Rodapé fixo no final da página -->
+  <footer class="py-6 text-center text-gray-400 border-t border-gray-700 backdrop-blur-sm">
+    <!-- Links com ícones -->
+    <div class="flex justify-center gap-4 mb-2">
+      <a href="https://github.com/AlexandreFB2003" target="_blank" class="hover:text-white flex items-center gap-1">
+        <i data-lucide="github" class="w-5 h-5"></i> GitHub
+      </a>
+      <a href="mailto:afborges2003@email.com" class="hover:text-white flex items-center gap-1">
+        <i data-lucide="mail" class="w-5 h-5"></i> Email
+      </a>
+    </div>
+    <!-- Texto de crédito -->
+    <p class="text-sm">© 2025 Alexandre Fonseca Borges. Todos os direitos reservados.</p>
+  </footer>
 
-  <script type="module" src="./main.js"></script>
+  <!-- Lógica JS da busca e inserção do header -->
+  <script type="module">
+    import { renderHeader } from './views/components.js';
+
+    // Insere dinamicamente o header com título
+    renderHeader('Catálogo de Filmes');
+
+    // Quando clicar no botão, redireciona para a página de resultados
+    document.getElementById('searchButton').addEventListener('click', () => {
+      const query = document.getElementById('searchInput').value.trim();
+      if (query) {
+        const url = `pages/results.html?query=${encodeURIComponent(query)}`;
+        window.location.href = url;
+      }
+    });
+
+    // Ativa os ícones Lucide no footer
+    lucide.createIcons();
+  </script>
 </body>
 </html>
