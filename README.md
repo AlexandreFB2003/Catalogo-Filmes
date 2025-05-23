@@ -1,6 +1,6 @@
 # 🎬 Catálogo de Filmes
 
-Bem-vindo ao **Catálogo de Filmes**, um projeto web moderno e responsivo que permite ao usuário buscar filmes por nome (em inglês) utilizando a [API OMDb](https://www.omdbapi.com/). O projeto mostra resultados com imagem, título, ano e tipo do conteúdo — tudo isso com um visual atrativo feito com Tailwind CSS e JavaScript modular.
+Bem-vindo ao **Catálogo de Filmes**, um projeto web moderno e responsivo que permite ao usuário buscar filmes por nome (em inglês) utilizando a [API OMDb](https://www.omdbapi.com/). O projeto mostra resultados com imagem, título, ano e tipo do conteúdo — tudo isso com um visual atrativo feito com Tailwind CSS e JavaScript.
 
 ---
 
@@ -18,7 +18,7 @@ Bem-vindo ao **Catálogo de Filmes**, um projeto web moderno e responsivo que pe
 
 - HTML5
 - Tailwind CSS
-- JavaScript ESModules
+- JavaScript
 - API [OMDb](https://www.omdbapi.com/)
 
 ---
